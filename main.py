@@ -21,19 +21,15 @@ class math:
 
 def main():
     math_operation = input("(+, -, *, /, **)\nEnter mathematical operation: ")
-    if (math_operation != "+") and (math_operation != "-") and (math_operation != "*") and (math_operation != "/") and (math_operation != "**"):
+    if math_operation not in ("+", "-", "*", "/", "**"):
         raise ValueError("Invalid input")
 
-    first_number = input("Enter first number: ")
-    if not first_number.isnumeric():
+    try:
+        first_number = int(input("Enter first number: "))
+        second_number = int(input("Enter second number: "))
+    except ValueError:
         raise ValueError("Invalid input")
-
-    second_number = input("Enter second number: ")
-    if not second_number.isnumeric():
-        raise ValueError("Invalid input")
-    
-    first_number, second_number = int(first_number), int(second_number)
-    
+        
     if math_operation == "+":
         return math.plus(first_number, second_number)
     elif math_operation == "-":
@@ -48,4 +44,4 @@ def main():
 
 if __name__ == "__main__":
     while True:
-        print("Result:", main())
+        print(f"Result: {main()}\n")
